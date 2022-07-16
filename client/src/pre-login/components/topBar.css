@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.topBar{
+    padding: 3%;
+}
+
+.topBar-menu{
+    list-style:none;
+    display: flex;
+    justify-content: space-between;
+}
