@@ -65,7 +65,9 @@ const IndivMeeting=(props)=>{
                 "Content-type":"application/json"
             },
             data:{
-                slots:availableSlots
+                slots:availableSlots,
+                meetingId:details._id,
+                user:localStorage.getItem("email")
             }
         }
         axios(config)

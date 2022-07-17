@@ -27,10 +27,16 @@ async function getMeeting(data){
         return meetingInfos
     for(const meetingId of data.meetingId){
         const meetingInfo = await Meetings.findOne({_id:meetingId})
-        if(meetingInfo.haveNotUploaded.includes(data.email)||meetingInfo.haveUploaded.includes(data.email))
+        if(meetingInfo.haveNotUploaded.includes(data.email))
             meetingInfos.push(meetingInfo)
         else if(meetingInfo.admin===data.email)
             meetingInfos.push(meetingInfo)
+        for(const member of meetingInfo.haveUploaded){
+            if(member.user === data.email){
+                meetingInfos.push(meetingInfo)
+                break
+            }
+        }
     }
     return meetingInfos
 }
@@ -43,7 +49,17 @@ async function addMember(data){
 }
 
 async function uploadSchedule(data){
-    console.log(data)
+    await Meetings.updateOne(
+        {_id:data.meetingId},
+        {$push:{haveUploaded:{
+            user:data.user,
+            slots:data.slots
+        }}}
+    )
+    await Meetings.updateOne(
+        {_id:data.meetingId},
+        {$pull:{haveNotUploaded:data.user}}
+    )
 }
 
 exports.createMeeting=createMeeting
