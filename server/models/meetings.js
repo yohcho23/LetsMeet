@@ -5,7 +5,10 @@ const meetings = new mongoose.Schema(
         name: {type: String, required: true},
         duration: {type: Number},
         admin: {type: String},
-        haveUploaded: [{type:String}],
+        haveUploaded: [{
+            user: {type:String}, 
+            slots: [{type:Number}]
+        }],
         haveNotUploaded: [{type:String}],
         range: [{type:Date},{type:Date}],
         slots:[{

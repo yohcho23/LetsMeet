@@ -30,4 +30,12 @@ router.post('/addMember', async (req,res)=>{
     }
 })
 
+router.post('/uploadSchedule',async(req,res)=>{
+    try{
+        await controller.uploadSchedule(req.body)
+    } catch(err){
+        console.log(err)
+    }
+})
+
 module.exports = router;

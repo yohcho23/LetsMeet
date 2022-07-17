@@ -42,6 +42,11 @@ async function addMember(data){
     )
 }
 
+async function uploadSchedule(data){
+    console.log(data)
+}
+
 exports.createMeeting=createMeeting
 exports.getMeeting=getMeeting
 exports.addMember=addMember
+exports.uploadSchedule=uploadSchedule
