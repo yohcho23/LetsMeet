@@ -35,61 +35,56 @@ const SignUpForm = () => {
     }
 
     return(
-        <div className='signup'>
-            <form>
-                <div className='signup-forms'>
-                    <label htmlFor="firstName">Fist Name <br></br>
-                        <input 
-                        type="text"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                    <label htmlFor="lastName">Last Name <br></br>
-                        <input 
-                        type="text"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                    <label htmlFor="email">Email <br></br>
-                        <input 
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                    <label htmlFor="password">Password <br></br>
-                        <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                    <label htmlFor="confirmPassword">Confirm Password <br></br>
-                        <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                </div>
+        <form className='signup-form'>
+            <label htmlFor="firstName">Fist Name <br></br>
+                <input 
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                ></input>
                 <br></br>
-                <Link to="/login">Back to Login</Link>
-                <div className='signup-submit'>
-                    <button 
-                    onClick={submitSignUp}
-                    type="button"
-                    >Submit</button>
-                </div>
-                
-            </form>
-        </div>
+            </label>
+            <label htmlFor="lastName">Last Name <br></br>
+                <input 
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                ></input>
+                <br></br>
+            </label>
+            <label htmlFor="email">Email <br></br>
+                <input 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                ></input>
+                <br></br>
+            </label>
+            <label htmlFor="password">Password <br></br>
+                <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                ></input>
+                <br></br>
+            </label>
+            <label htmlFor="confirmPassword">Confirm Password <br></br>
+                <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                ></input>
+                <br></br>
+            </label>
+            <br></br>
+            <p>Already have account? <Link to="/login">Back to Login</Link></p>
+            <div className='signup-submit'>
+                <button 
+                onClick={submitSignUp}
+                type="button"
+                >Submit</button>
+            </div>
+        </form>
     )
 }
 

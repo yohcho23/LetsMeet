@@ -1,4 +1,81 @@
-.form{
+.login-page{
+    background-color: #A5A682;
+    height: 78.5vh;
+    padding: 5% 18%;
+    position: relative;
+}
+
+.login-page > a{
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: black;
+}
+
+.login-page-container{
+    background-color: #FBB651;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    border-radius: 20px;
+}
+
+.login-page-container-left{
+    width: 40%;
+    background-color: white;
+    padding: 7.5% 5%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.login-page-container-left > img{
+    width: 60%;
+    margin-bottom: 0px;
+}
+
+.login-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+}
+
+.login-form > label{
+    color: grey;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.login-form input{
+    margin-top: 5px;
+    height: 25px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: solid 0.1px grey;
+    width: 200px;
+}
+
+.login-form p{
+    font-size: 14px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.login-form button{
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #794577;
+    color: white;
+    font-weight:700;
+}
+
+.login-page-container-right{
+    width: 50%;
+    height: 100%;
+    background-color: #794577;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

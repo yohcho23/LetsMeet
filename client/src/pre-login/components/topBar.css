@@ -4,11 +4,47 @@
 }
 
 .topBar{
-    padding: 3%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+}
+
+.topBar img{
+    height: 100px;
+    width: auto;
 }
 
 .topBar-menu{
     list-style:none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.topBar ul li a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+.topBar ul li a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.topBar ul li a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }

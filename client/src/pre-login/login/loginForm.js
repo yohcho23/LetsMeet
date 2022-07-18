@@ -41,35 +41,28 @@ const LoginForm = () => {
     }
 
     return(
-        <div className='form'>
-            <form>
-                <div className='login-forms'>
-                    <label htmlFor="email">Email <br></br>
-                        <input 
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                    <label htmlFor="password">Password <br></br>
-                        <input 
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        ></input>
-                        <br></br>
-                    </label>
-                </div>
-                <br></br>
-                <Link to="/signUp">Create New Account</Link>
-                <div className='login-submit'>
-                    <button onClick={submitLogin} type="Button">
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </div>
+        <form className='login-form'>
+            <label htmlFor="email">Email <br></br>
+                <input 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                ></input>
+            </label>
+            <label htmlFor="password">Password <br></br>
+                <input 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                ></input>
+            </label>
+            <p>No Account? <Link to="/signUp">Create New Account</Link></p>
+            <div className='login-submit'>
+                <button onClick={submitLogin} type="Button">
+                    Sign in
+                </button>
+            </div>
+        </form>
     )
 }
 
