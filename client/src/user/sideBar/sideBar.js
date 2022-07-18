@@ -1,40 +1,24 @@
-import { fallDown as Menu } from 'react-burger-menu';
-import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import logo from "../../assets/logo.png"
 
 import "./sideBar.css"
 
-function Sidebar () {
-    const navigate = useNavigate();
-    
-    const logout = ()=>{
-        navigate('/')
-    }
-
+function Sidebar (props) {
     return (
-      <Menu className='menu-bar'>
-        <button 
-            className="menu-item" 
-            onClick={(e)=>{navigate('/dashboard')}}>
-            Home
-        </button>
-        <button 
-            className="menu-item" 
-            onClick={(e)=>{navigate('/groups')}}>
-            Groups
-        </button>
-        <button 
-            className="menu-item" 
-            onClick={(e)=>{navigate('/settings')}}>
-            Settings
-        </button>
-        <button 
-            className="menu-item" 
-            onClick={()=>{logout()}}>
-            Logout
-        </button>
-      </Menu>
-    );
+        <div className={`sidebar ${props.action && "sidebar-show"}`}>
+            {/*<button className='sidebar-close-button'>X</button>*/}
+            <div className='sidebar-content'>
+                <img src={logo} alt="logo"></img>
+                <hr></hr>
+                <Link to={"/dashboard"}>Home</Link> <br></br>
+                <Link to={"/groups"}>Groups</Link> <br></br>
+                <Link to={"/settings"}>Settings</Link> <br></br>
+                <Link to={"/"}>Logout</Link> <br></br>
+            </div>
+        </div>
+    )
   };
   
   export default Sidebar;

@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Sidebar from '../sideBar/sideBar';
+
 import "./dashboard.css"
 
-const Dashboard = () => (
-    <div>
-        <div className='intro-header'>
-            <p>{`Welcome, ${localStorage.getItem("name")}`}</p>
+const Dashboard = () => {
+    const [openSideBar, setOpenSideBar] = useState(false)
+
+    return(
+        <div className='dashboard-page'>
+            <Sidebar action={openSideBar}/>
+            <div className='dashboard-page-content' onClick={()=>{openSideBar && setOpenSideBar(false)}}>
+                <div className='dashboard-page-content-top'>
+                    <h1>{`Welcome, ${localStorage.getItem("name")}`}</h1>
+                    <button onClick={()=>setOpenSideBar(true)} className='dashboard-page-content-top-button'>Navigate</button>
+                </div>
+                <div className='dashboard-page-content-main'>
+                </div>
+            </div>
         </div>
-        <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
-        <div>
-            Dashboard
-        </div>
-    </div>
-)
+    )
+}
 
 export default Dashboard;

@@ -1,0 +1,38 @@
+.settings-page{
+    position: relative;
+    height: 80vh;
+    background-color: #A5A682;
+    padding: 10vh;
+}
+
+.settings-page-content{
+    height: 100%;
+    border: solid 1px black;
+}
+
+.settings-page-content-top{
+    position: relative;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.settings-page-content-top-button{
+    margin-left: auto;
+    margin-right: 1%;
+    background-color: transparent;
+    cursor: pointer;
+    height: 60%;
+}
+
+.settings-page-content-main{
+    height: 90%;
+    width: 100%;
+}
+
+.settings-page-content-main-form{
+    display: flex;
+    flex-direction: column;
+}
