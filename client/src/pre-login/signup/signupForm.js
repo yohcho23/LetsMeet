@@ -36,43 +36,48 @@ const SignUpForm = () => {
 
     return(
         <form className='signup-form'>
-            <label htmlFor="firstName">Fist Name <br></br>
+            <label required htmlFor="firstName">Fist Name <br></br>
                 <input 
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                required
                 ></input>
                 <br></br>
             </label>
-            <label htmlFor="lastName">Last Name <br></br>
+            <label required htmlFor="lastName">Last Name <br></br>
                 <input 
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+                required
                 ></input>
                 <br></br>
             </label>
-            <label htmlFor="email">Email <br></br>
+            <label required htmlFor="email">Email <br></br>
                 <input 
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 ></input>
                 <br></br>
             </label>
-            <label htmlFor="password">Password <br></br>
+            <label required htmlFor="password">Password <br></br>
                 <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
                 ></input>
                 <br></br>
             </label>
-            <label htmlFor="confirmPassword">Confirm Password <br></br>
+            <label required htmlFor="confirmPassword">Confirm Password <br></br>
                 <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
                 ></input>
                 <br></br>
             </label>

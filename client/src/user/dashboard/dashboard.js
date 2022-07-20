@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import Sidebar from '../sideBar/sideBar';
 
+import burgerMenu from "../../assets/burger-menu.png"
+
 import "./dashboard.css"
 
 const Dashboard = () => {
@@ -13,7 +15,9 @@ const Dashboard = () => {
             <div className='dashboard-page-content' onClick={()=>{openSideBar && setOpenSideBar(false)}}>
                 <div className='dashboard-page-content-top'>
                     <h1>{`Welcome, ${localStorage.getItem("name")}`}</h1>
-                    <button onClick={()=>setOpenSideBar(true)} className='dashboard-page-content-top-button'>Navigate</button>
+                    <button onClick={()=>setOpenSideBar(true)} className='dashboard-page-content-top-button'>
+                        <img src={burgerMenu}></img>
+                    </button>
                 </div>
                 <div className='dashboard-page-content-main'>
                 </div>

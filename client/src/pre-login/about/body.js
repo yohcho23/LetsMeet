@@ -1,7 +1,11 @@
 import { useState } from "react"
 
-
 import "./body.css"
+
+import pic1 from "../../assets/landingpage/aboutus/meeting.png"
+import pic2 from "../../assets/landingpage/aboutus/calendar.png"
+import pic3 from "../../assets/landingpage/aboutus/group.png"
+import pic4 from "../../assets/landingpage/aboutus/schedule.png"
 
 const Body=()=>{
     const [centerCardDisplay,setCenterCardDisplay] = useState(0)
@@ -12,19 +16,23 @@ const Body=()=>{
     const cards = [
         {
             front:"Getting Started",
-            back:"Create an account and either create a group or join an existent one"
+            back:"Create an account and either create a group or join an existent one",
+            img: pic1
         },
         {
             front:"Scheduling a new meeting",
-            back:"Create a new meeting. Enter how long the meeting is and a date range that you want to have the meeting between"
+            back:"Create a new meeting. Enter how long the meeting is and a date range that you want to have the meeting between",
+            img: pic2           
         },
         {
             front:"Inviting your group members",
-            back:"Invite your group members and wait for them to upload their availabilities"
+            back:"Invite your group members and wait for them to upload their availabilities",
+            img: pic3
         },
         {
-            front:"Creating a schedule",
-            back:"Once everyone finishes uploading, our algorithm will generate which slot best fit the group's schedule"
+            front:"Find the best time",
+            back:"Once everyone finishes uploading, our algorithm will generate which slot best fit the group's schedule",
+            img: pic4
         }
     ]
 
@@ -62,7 +70,9 @@ const Body=()=>{
                         {centerCardDisplay>0 && 
                             <div className="about-page-howTo-cardsections-card-front">
                                 <h1>{`Step ${centerCardDisplay}:`}</h1>
-                                <div>Image PlaceHolder</div>
+                                <div>
+                                    <img src={cards[centerCardDisplay-1].img}></img>
+                                </div>
                                 <h2>{cards[centerCardDisplay-1].front}</h2>
                             </div>
                         }
@@ -80,7 +90,9 @@ const Body=()=>{
                             {flip ? <p>{cards[centerCardDisplay].back}</p> : 
                                 <div className="about-page-howTo-cardsections-card-front">
                                     <h1>{`Step ${centerCardDisplay+1}:`}</h1>
-                                    <div>Image PlaceHolder</div>
+                                    <div>
+                                        <img src={cards[centerCardDisplay].img}></img>
+                                    </div>
                                     <h2>{cards[centerCardDisplay].front}</h2>
                                     <p>click to flip</p>
                                 </div>
@@ -97,7 +109,9 @@ const Body=()=>{
                         {centerCardDisplay<cards.length-1 && 
                             <div className="about-page-howTo-cardsections-card-front">
                                 <h1>{`Step ${centerCardDisplay+2}:`}</h1>
-                                <div>Image PlaceHolder</div>
+                                <div>
+                                    <img src={cards[centerCardDisplay+1].img}></img>
+                                </div>
                                 <h2>{cards[centerCardDisplay+1].front}</h2>
                             </div>
                         }

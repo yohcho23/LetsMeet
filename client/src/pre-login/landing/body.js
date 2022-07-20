@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 
-import initialimg from "../../assets/landingpage/initial3.jpg"
+import initialimg from "../../assets/landingpage/initial.jpg"
 
 import "./body.css"
 import "animate.css/animate.min.css";

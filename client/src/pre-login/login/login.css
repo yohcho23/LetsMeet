@@ -11,10 +11,36 @@
     top: 20px;
     left: 20px;
     color: black;
+    display: flex;
+    align-items: center;
+}
+
+.login-page > a > img{
+    width: 25px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.login-page > a :after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    margin-left: 35px;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.login-page > a :hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .login-page-container{
-    background-color: #FBB651;
     height: 100%;
     display: flex;
     border-radius: 20px;
@@ -75,7 +101,13 @@
 .login-page-container-right{
     width: 50%;
     height: 100%;
-    background-color: #794577;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.login-page-container-right > img{
+    height: 100%;
+    width: auto;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }

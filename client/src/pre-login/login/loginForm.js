@@ -47,6 +47,7 @@ const LoginForm = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 ></input>
             </label>
             <label htmlFor="password">Password <br></br>
@@ -54,6 +55,7 @@ const LoginForm = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
                 ></input>
             </label>
             <p>No Account? <Link to="/signUp">Create New Account</Link></p>

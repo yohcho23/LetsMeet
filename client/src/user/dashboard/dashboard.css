@@ -22,6 +22,12 @@
     background-color: transparent;
     cursor: pointer;
     height: 60%;
+    border: none;
+}
+
+.dashboard-page-content-top-button > img{
+    height: 100%;
+    width: auto;
 }
 
 .dashboard-page-content-main{
