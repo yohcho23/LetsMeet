@@ -15,8 +15,8 @@ router.get('/getPendingGroups', async(req,res)=>{
 
 router.post('/acceptPendingUser', async(req,res)=>{
     try{
-        await controller.acceptPendingUser(req.query)
-        res.json({})
+        const newGroup = await controller.acceptPendingUser(req.query)
+        res.json({group:newGroup})
     }
     catch(err){
         console.log(err)

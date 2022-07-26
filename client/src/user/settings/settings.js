@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Sidebar from '../sideBar/sideBar';
 
 import "./settings.css"
 
 const Settings = () => {
+    const {state} = useLocation();
     const [openSideBar, setOpenSideBar] = useState(false)
 
     const [inputTypeChoice, setInputTypeChoice] = useState(true)

@@ -5,6 +5,7 @@ async function createGroup(data){
     const newGroup = await Groups.create({
         name: data.groupName,
         admin: data.email,
+        members: [data.email],
         inviteCode: "",
         meetings:[]
     })
@@ -12,6 +13,7 @@ async function createGroup(data){
         {email:data.email},
         {$push:{currentGroups:newGroup._id}}
     )
+    return newGroup
 }
 
 async function getGroups(data){
@@ -32,6 +34,18 @@ async function addMember(data){
     )
  }
 
+async function removeGroup(data){
+    await Users.updateOne(
+        {email:data.email},
+        {$pull:{currentGroups:data.group._id}}
+    )
+    await Groups.updateOne(
+        {_id:data.group._id},
+        {$pull:{members:data.email}}
+    )
+}
+
 exports.createGroup=createGroup
 exports.getGroups=getGroups
 exports.addMember=addMember
+exports.removeGroup=removeGroup

@@ -5,7 +5,8 @@ const controller = require('../controllers/groupsController');
 
 router.post('/createGroup', async (req,res)=>{
     try{
-        await controller.createGroup(req.body)
+        const group = await controller.createGroup(req.body)
+        res.json({newGroup:group})
     } catch(err){
         console.log(err)
     }
@@ -26,6 +27,15 @@ router.post('/addMember', async (req,res)=>{
         res.json({})
     } catch(err){
         console.log(err)
+    }
+})
+
+router.post('/removeGroup', async (req,res)=>{
+    try{
+        await controller.removeGroup(req.body)
+        res.json({status:"good"})
+    } catch(err){
+
     }
 })
 

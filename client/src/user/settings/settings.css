@@ -8,6 +8,7 @@
 .settings-page-content{
     height: 100%;
     border: solid 1px black;
+    background-color: teal;
 }
 
 .settings-page-content-top{

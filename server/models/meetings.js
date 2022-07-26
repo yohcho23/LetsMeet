@@ -11,10 +11,7 @@ const meetings = new mongoose.Schema(
         }],
         haveNotUploaded: [{type:String}],
         range: [{type:Date},{type:Date}],
-        slots:[{
-            start: {type:Number},
-            end: {type:Number}
-        }]
+        slots:{type:Number, required: false}
     }, {collection: 'Meetings'}
 );
 

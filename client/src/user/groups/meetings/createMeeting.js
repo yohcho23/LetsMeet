@@ -41,7 +41,7 @@ const CreateMeeting = (props)=>{
     const handleCreateMeeting = (e)=>{
         e.preventDefault()
         const data={
-            self:localStorage.getItem('email'),
+            self:props.userInfo.email,
             name:meetingName,
             length:meetingLength,
             addedMembers:members,
@@ -81,7 +81,7 @@ const CreateMeeting = (props)=>{
     }
     return(
         <div>
-            <button variant="outlined" onClick={handleClickOpen}>
+            <button className='groups-page-content-main-current-individualDisplay-full-section-header-button' onClick={handleClickOpen}>
                 Create New Meeting
             </button>
             <Dialog open={open} onClose={handleClose}>

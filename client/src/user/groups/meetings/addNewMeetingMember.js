@@ -16,7 +16,6 @@ const AddNewMember = (props)=>{
     };
 
     const handleAddMember=()=>{
-        console.log(props.details._id)
         var config = {
             method: "post",
             url: 'http://localhost:5000/api/meetings/addMember',
@@ -30,7 +29,6 @@ const AddNewMember = (props)=>{
         }
         axios(config)
         .then((res)=>{
-            console.log(res)
         })
         .catch((err)=>{
             console.log(err)
@@ -47,7 +45,7 @@ const AddNewMember = (props)=>{
                 <DialogContent>
                     <form>
                         <label>New member email:
-                            <input onChange={(e)=> setEmail(e.target.value)}></input>
+                            <input onChange={(e)=> setEmail(e.target.value)} onKeyDown={(e)=>{e.key==="Enter" && handleAddMember()}}></input>
                         </label>
                         <button type='button' onClick={handleAddMember}>Add</button>
                     </form>

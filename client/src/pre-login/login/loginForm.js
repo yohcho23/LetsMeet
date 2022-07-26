@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import axios from "axios"
 
+import { useNavigate } from 'react-router-dom';
+
 import { Link } from "react-router-dom";
 
 import "./login.css"
@@ -8,6 +10,7 @@ import "./login.css"
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
 
     const submitLogin = ()=>{
         const creds = JSON.stringify({
@@ -27,9 +30,7 @@ const LoginForm = () => {
         .then((res)=>{
             const user = res.data.user
             if(user){
-                localStorage.setItem("email",user.email)
-                localStorage.setItem("name",user.name.split(' ')[0])
-                window.location.href='/dashboard'
+                navigate("/dashboard",{state:{email:user.email, name:user.name}})
             }
             else{
                 alert("Invalid Login Credentials")
@@ -55,6 +56,10 @@ const LoginForm = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e)=>{
+                    if(e.key==="Enter")
+                        submitLogin()
+                }}
                 required
                 ></input>
             </label>

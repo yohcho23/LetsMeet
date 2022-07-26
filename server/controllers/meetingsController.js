@@ -12,7 +12,7 @@ async function createMeeting(data){
         haveUploaded: [],
         haveNotUploaded: data.addedMembers,
         range: [moment(data.range[0],'YYYY-MM-DD'),moment(data.range[1],'YYYY-MM-DD')],
-        slots:[]
+        slots:null
     })
     await Groups.updateOne(
         {_id:data.groupId},
@@ -51,14 +51,21 @@ async function addMember(data){
 async function uploadSchedule(data){
     await Meetings.updateOne(
         {_id:data.meetingId},
-        {$push:{haveUploaded:{
-            user:data.user,
-            slots:data.slots
-        }}}
+        {
+            $push:{haveUploaded:{
+                user:data.user,
+                slots:data.slots
+            }},
+            $pull:{haveNotUploaded:data.user}
+        }
     )
+}
+
+async function selectSlot(data){
+    console.log(data)
     await Meetings.updateOne(
         {_id:data.meetingId},
-        {$pull:{haveNotUploaded:data.user}}
+        {$set:{slots:data.selectedSlot}}
     )
 }
 
@@ -66,3 +73,4 @@ exports.createMeeting=createMeeting
 exports.getMeeting=getMeeting
 exports.addMember=addMember
 exports.uploadSchedule=uploadSchedule
+exports.selectSlot=selectSlot

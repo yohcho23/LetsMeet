@@ -29,7 +29,6 @@ const AddNewMember = (props)=>{
         }
         axios(config)
         .then((res)=>{
-            console.log(res)
             handleClose()
         })
         .catch((err)=>{
@@ -39,18 +38,24 @@ const AddNewMember = (props)=>{
 
     return(
         <div>
-            <button variant="outlined" onClick={handleClickOpen}>
+            <button className='groups-page-content-main-current-individualDisplay-full-section-header-button' onClick={handleClickOpen}>
                 Add New Member
             </button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add New Member</DialogTitle>
                 <DialogContent>
-                    <form>
+                    <div>
                         <label>New member email:
-                            <input onChange={(e)=> setEmail(e.target.value)}></input>
+                            <input 
+                                onChange={(e)=> setEmail(e.target.value)}
+                                onKeyDown={(e)=> {
+                                    if(e.key==="Enter")
+                                        handleAddMember()
+                                }}
+                            ></input>
                         </label>
                         <button type='button' onClick={handleAddMember}>Add</button>
-                    </form>
+                    </div>
                 </DialogContent>
             </Dialog>
         </div>

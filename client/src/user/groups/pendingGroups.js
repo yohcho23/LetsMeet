@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
-const PendingGroups=()=>{
+const PendingGroups=(props)=>{
     const [pendingGroups,setPendingGroups] = useState([])
     const getPendingGroups=()=>{
         var config = {
@@ -11,7 +11,7 @@ const PendingGroups=()=>{
                 "Content-type":"application/json"
             },
             params:{
-                email:localStorage.getItem("email")
+                email:props.userInfo.email
             }
         }
         axios(config)
@@ -36,12 +36,15 @@ const PendingGroups=()=>{
             },
             params:{
                 groupId:group.groupId,
-                email:localStorage.getItem("email")
+                email:props.userInfo.email
             }
         }
         axios(config)
         .then(res=>{
-            console.log(res)
+            props.rerender(prevGroups=>{
+                const newGroups = [...prevGroups,res.data.group]
+                return newGroups
+            })
         })
         .catch(err=>{
             console.log(err)
@@ -60,12 +63,11 @@ const PendingGroups=()=>{
             },
             params:{
                 groupId:group.groupId,
-                email:localStorage.getItem("email")
+                email:props.userInfo.email
             }
         }
         axios(config)
         .then(res=>{
-            console.log(res)
         })
         .catch(err=>{
             console.log(err)
@@ -80,10 +82,13 @@ const PendingGroups=()=>{
             )
         return pendingGroups.map(group=>{
             return(
-                <div key={group.groupId} id={group.groupId}>
-                    <p>{`${group.groupName}-${group.groupAdmin}`}</p>
-                    <button onClick={()=>handleAccept(group)}>Accept</button>
-                    <button onClick={()=>handleDecline(group)}>Decline</button>
+                <div className='groups-page-content-main-pending-indiv' key={group.groupId} id={group.groupId}>
+                    <h4>{group.groupName}</h4>
+                    <div className='groups-page-content-main-pending-indiv-buttons'>
+                        <button onClick={()=>handleAccept(group)}>✅</button>
+                        <hr></hr>
+                        <button onClick={()=>handleDecline(group)}>❌</button>
+                    </div>
                 </div>
             )
         })

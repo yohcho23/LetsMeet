@@ -33,6 +33,16 @@ router.post('/addMember', async (req,res)=>{
 router.post('/uploadSchedule',async(req,res)=>{
     try{
         await controller.uploadSchedule(req.body)
+        res.json({})
+    } catch(err){
+        console.log(err)
+    }
+})
+
+router.post('/selectSlot',async(req,res)=>{
+    try{
+        await controller.selectSlot(req.body)
+        res.json({})
     } catch(err){
         console.log(err)
     }

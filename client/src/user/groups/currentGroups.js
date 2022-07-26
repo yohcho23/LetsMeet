@@ -1,26 +1,34 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import IndivGroup from './indivGroup'
 
-const CurrentGroups = ()=>{
-    const [groups, setGroups] = useState([])
-    
-    const getCurrentGroups = ()=>{
+const CurrentGroups = (props)=>{
+    const groups = props.groups
+
+    const removeGroup=(group)=>{
         var config={
-            method:"get",
-            url:"http://localhost:5000/api/groups/getGroups",
+            method:"post",
+            url:"http://localhost:5000/api/groups/removeGroup",
             header:{
                 "Content-type":"application/json"
             },
-            params: {
-                email:localStorage.getItem("email")
+            data: {
+                email:props.userInfo.email,
+                group:group
             }
         }
 
         axios(config)
         .then((res)=>{
-            setGroups(res.data.groups)
+            props.rerender(prevGroups=>{
+                const newGroups = []
+                for(const currGroup of prevGroups){
+                    if(currGroup._id!==group._id)
+                        newGroups.push(currGroup)
+                }
+                return newGroups
+            })
         })
         .catch((err)=>{
             console.log(err)
@@ -28,18 +36,28 @@ const CurrentGroups = ()=>{
     }
 
     const populateCurrentGroups = ()=>{
+        if(groups.length===0)
+            return(
+                <div>
+                    No Pending Invites
+                </div>
+            )
         return groups.map(group=>{
             return(
-                <div key={group._id}>
-                    {group.name}
-                    <IndivGroup group={group}/>
+                <div className='groups-page-content-main-current-individualDisplay' key={group._id}>
+                    <h4>{group.name}</h4>
+                    <div className='groups-page-content-main-current-individualDisplay-buttons'>
+                        <IndivGroup userInfo={props.userInfo} group={group}/>
+                        {props.userInfo.email !==group.admin && 
+                        <button 
+                            className="groups-page-content-main-current-individualDisplay-buttons-remove" 
+                            onClick={()=>removeGroup(group)}
+                        >❌</button>}
+                    </div>
                 </div>
             )
         })
     }
-    useEffect(()=>{
-        getCurrentGroups()
-    },[])
     
     return(
         <div>

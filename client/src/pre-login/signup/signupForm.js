@@ -26,7 +26,6 @@ const SignUpForm = () => {
         }
         axios(config)
         .then((res)=>{
-            console.log(res)
             window.location.href='/login'
         })
         .catch((err)=>{

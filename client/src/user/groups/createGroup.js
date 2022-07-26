@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import { DialogTitle, DialogContent } from '@mui/material';
 import axios from 'axios';
 
-const CreateGroup = ()=>{
+const CreateGroup = (props)=>{
     const [open,setOpen] = useState(false)
     const [groupName,setGroupName] = useState("")
 
@@ -18,7 +18,7 @@ const CreateGroup = ()=>{
     const handleCreateGroup = ()=>{
         const data = JSON.stringify({
             groupName:groupName,
-            email:localStorage.getItem("email")
+            email:props.userInfo.email
         })
 
         var config = {
@@ -32,7 +32,11 @@ const CreateGroup = ()=>{
         
         axios(config)
         .then((res)=>{
-            console.log(res)
+            props.rerender(prevGroups=>{
+                const newGroups = [...prevGroups,res.data.newGroup]
+                return newGroups
+            })
+            handleClose()
         })
         .catch((err)=>{
             console.log(err)
@@ -40,19 +44,26 @@ const CreateGroup = ()=>{
     }
 
     return(
-        <div>
-            <button variant="outlined" onClick={handleClickOpen}>
+        <div className='groups-page-content-main-current-header-createsection'>
+            <button className='groups-page-content-main-current-header-createsection-button' onClick={handleClickOpen}>
                 Create New Group
             </button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Create New Group</DialogTitle>
                 <DialogContent>
-                    <form>
-                        <label>New Group Name:
-                            <input onChange={(e)=> setGroupName(e.target.value)}></input>
+                    <div className='groups-page-content-main-current-header-createsection-form'>
+                        <label>
+                            New Group Name:
+                            <input 
+                                onChange={(e)=> setGroupName(e.target.value)}
+                                onKeyDown={(e)=> {
+                                    if(e.key==="Enter")
+                                        handleCreateGroup()
+                                }}
+                            ></input>
                         </label>
                         <button type='button' onClick={handleCreateGroup}>Create</button>
-                    </form>
+                    </div>
                 </DialogContent>
             </Dialog>
         </div>
